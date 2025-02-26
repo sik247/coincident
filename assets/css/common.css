@@ -1,0 +1,17 @@
+html {
+  font-size: 62.5%;
+}
+body,
+button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 16px;
+}
