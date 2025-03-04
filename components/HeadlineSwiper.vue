@@ -10,10 +10,12 @@
 
 <script>
 import exImg from '~/assets/images/ex_img.png'
+import bitget from '~/assets/images/bitget3.png'
+import cryptox from '~/assets/images/cryptox2.png'
 
 export default {
   setup() {
-    const images = [exImg, exImg, exImg, exImg]
+    const images = [exImg, bitget, cryptox, exImg]
     const duplicatedSlides = [...images, ...images, ...images]
 
     return {

@@ -39,8 +39,10 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   // 나머지 설정 (css, vite 등)
   css: ['~/assets/css/reset.css', '~/assets/css/common.css'],
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -50,7 +52,9 @@ export default defineNuxtConfig({
       }
     }
   },
+
   components: true,
   pages: true,
-  devtools: { enabled: false }
+  devtools: { enabled: false },
+  compatibilityDate: '2025-02-26'
 })

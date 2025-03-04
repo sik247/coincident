@@ -14,15 +14,15 @@
               <li>
                 <p>Social Media</p>
                 <div class="sns-box">
-                  <a href="#none" target="_blank"
-                    ><img src="~/assets/images/instagram_dark.svg" alt="인스타그램"
-                  /></a>
-                  <a href="#none" target="_blank"
-                    ><img src="~/assets/images/twitter_dark.svg" alt="X"
-                  /></a>
-                  <a href="#none" target="_blank"
-                    ><img src="~/assets/images/youtube_dark.svg" alt="유튜브"
-                  /></a>
+                  <a href="#none" target="_blank">
+                    <img src="~/assets/images/instagram_dark.svg" alt="인스타그램" />
+                  </a>
+                  <a href="#none" target="_blank">
+                    <img src="~/assets/images/twitter_dark.svg" alt="X" />
+                  </a>
+                  <a href="#none" target="_blank">
+                    <img src="~/assets/images/youtube_dark.svg" alt="유튜브" />
+                  </a>
                 </div>
               </li>
 
@@ -35,42 +35,116 @@
         </div>
 
         <div class="form-section">
-          <div class="h3-box"><h3>Send a note</h3></div>
-          <form action="post">
+          <div class="h3-box">
+            <h3>Send a note</h3>
+          </div>
+          <!-- Remove the "action" attribute and add submit event handler -->
+          <form @submit.prevent="handleSubmit">
             <ul>
               <li>
                 <label for="email"> EMAIL ADDRESS </label>
-                <input type="text" id="email" autocomplete="off" required />
+                <input
+                  type="email"
+                  id="email"
+                  v-model="formData.email"
+                  autocomplete="off"
+                  required
+                />
               </li>
 
               <li>
                 <label for="contact1"> PHONE NUMBER </label>
-                <input type="number" id="contact1" autocomplete="off" required />
+                <input
+                  type="text"
+                  id="contact1"
+                  v-model="formData.contact"
+                  autocomplete="off"
+                  required
+                />
               </li>
 
               <li>
                 <label for="company">NAME OR COMPANY </label>
-                <input type="text" id="company" autocomplete="off" required />
+                <input
+                  type="text"
+                  id="company"
+                  v-model="formData.company"
+                  autocomplete="off"
+                  required
+                />
               </li>
 
               <li>
                 <label for="contact2"> MEMO </label>
-                <textarea type="text" id="contact2" autocomplete="off" required></textarea>
+                <textarea
+                  id="contact2"
+                  v-model="formData.message"
+                  autocomplete="off"
+                  required
+                ></textarea>
               </li>
 
               <li class="btn-box">
-                <button>
+                <button type="submit">
                   Send
                   <span class="material-symbols-outlined">chevron_right</span>
                 </button>
               </li>
             </ul>
           </form>
+          <!-- Display a status message after submission -->
+          <p v-if="statusMessage">{{ statusMessage }}</p>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  name: 'Contact',
+  data() {
+    return {
+      formData: {
+        email: '',
+        contact: '',
+        company: '',
+        message: ''
+      },
+      statusMessage: ''
+    }
+  },
+  methods: {
+    async handleSubmit() {
+      this.statusMessage = 'Sending...'
+      try {
+        // POST the form data to your Nuxt API endpoint
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: this.formData.email,
+            name: this.formData.company, // using the "company" field as the sender’s name
+            phone: this.formData.contact,
+            message: this.formData.message
+          })
+        })
+        const result = await res.json()
+        if (result.success) {
+          this.statusMessage = 'Message sent successfully!'
+          // Reset the form fields
+          this.formData = { email: '', contact: '', company: '', message: '' }
+        } else {
+          this.statusMessage = `Error: ${result.error}`
+        }
+      } catch (error) {
+        console.error(error)
+        this.statusMessage = 'An error occurred while sending the message.'
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @use '~/assets/scss/variables.scss' as *;
