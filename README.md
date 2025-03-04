@@ -1,75 +1,51 @@
-# Nuxt Minimal Starter
+# Coincident Ventures Showcase
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Coincident Ventures is our innovative crypto portfolio management platform that leverages modern web technologies to help users track and manage their digital asset investments. This repository serves as a showcase of our platform's architecture, design, and features.
 
-## Setup
+![Application Preview](./assets/images/preview1.png)
 
-Make sure to install dependencies:
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Development](#development)
+- [Production](#production)
+- [Deployment](#deployment)
+- [Preview](#preview)
+- [License](#license)
+
+## Overview
+
+Built on the Nuxt Minimal Starter, this project demonstrates a responsive, user-friendly interface for managing crypto portfolios. It integrates with industry APIs to deliver real-time market insights and supports serverless functions for additional features like contact form handling.
+
+## Features
+
+- **Responsive, Mobile-First Design:** Optimized for various devices.
+- **Real-Time Data Integration:** Connects to crypto market and news APIs.
+- **Modern UI/UX:** Clean, professional design with intuitive navigation.
+- **Serverless Functions:** Efficient back-end processing (e.g., contact form submissions).
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v14 or higher
+- Your preferred package manager: npm, pnpm, yarn, or bun
+
+### Installation
+
+Clone the repository and install dependencies:
 
 ```bash
-# npm
+# Clone the repository
+git clone https://github.com/sik247/coincident.git
+cd coincident
+
+# Install dependencies (choose one)
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+# pnpm install
+# yarn install
+# bun install
 ```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
